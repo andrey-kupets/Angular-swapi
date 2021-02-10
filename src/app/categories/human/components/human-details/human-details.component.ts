@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Human} from '../../models/Human';
 
 @Component({
   selector: 'app-human-details',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HumanDetailsComponent implements OnInit {
 
-  constructor() { }
+  human: Human;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(value => {
+      this.human = this.router.getCurrentNavigation().extras.state as Human;
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  goToAddNewHuman(): void {
+    this.router.navigate(['creation'], {relativeTo: this.activatedRoute, state: this.human});
+  }
+  goToEditHuman(): void {
+    this.router.navigate(['edition'], {relativeTo: this.activatedRoute, state: this.human});
   }
 
 }

@@ -1,1 +1,20 @@
-<p>human-details works!</p>
+<router-outlet></router-outlet>
+
+<div *ngIf="human">
+    <hr>
+    <button (click)="goToAddNewHuman()">Add New Human</button>
+    <button (click)="goToEditHuman()">Edit Human</button>
+    <h3>Human details:</h3>
+    <p>{{human.name}}</p>
+    <p>height: {{human.height}}sm</p>
+    <p>mass: {{human.mass}}kg</p>
+    <p>hair_color: {{human.hair_color}}</p>
+    <p>skin_color: {{human.skin_color}}</p>
+    <p>eye_color: {{human.eye_color}}</p>
+    <p>birth_year: {{human.birth_year}}</p>
+    <p>gender: {{human.gender}}</p>
+    <p>homeworld: {{human.homeworld}}</p>
+    <p>created: {{human.created}}</p>
+    <p>edited: {{human.edited}}</p>
+  </div>
+

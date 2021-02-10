@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {path: 'people', loadChildren: () => import('./categories/human/modules/human/human.module')
@@ -19,9 +20,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
