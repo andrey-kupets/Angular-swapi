@@ -1,4 +1,5 @@
 export interface Human {
+  // id: number; //add personaly ---- only separately in one-human comp-t
   name: string;
   height: string;
   mass: string;

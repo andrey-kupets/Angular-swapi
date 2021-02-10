@@ -10,11 +10,17 @@ export class OneHumanComponent implements OnInit {
 
   @Input()
   human: Human;
+  id: number;
+
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.human.url.split('/').reverse()[1]);
+    // get id# ---- ser in all-people comp-t
+    // console.log((this.human.url.split('/')[this.human.url.split('/').length-2]));
+    // or --- human.url.split('/').reverse()[1]
+    this.id = +this.human.url.split('/').reverse()[1];
+
   }
 
 }

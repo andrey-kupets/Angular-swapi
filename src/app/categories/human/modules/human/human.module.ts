@@ -6,13 +6,15 @@ import {AllPeopleComponent} from '../../components/all-people/all-people.compone
 import {HttpClientModule} from '@angular/common/http';
 import {HumanService} from '../../services/human.service';
 import {OneHumanComponent} from '../../components/one-human/one-human.component';
+import {HumanDetailsComponent} from '../../components/human-details/human-details.component';
 
 
 @NgModule({
   declarations: [
     AllPeopleComponent,
     OneHumanComponent,
-  ],
+    HumanDetailsComponent,
+],
   imports: [
     CommonModule,
     HumanRoutingModule,
