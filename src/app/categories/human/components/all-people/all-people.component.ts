@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HumanService} from '../../services/human.service';
 import {People} from '../../models/People';
 import {SubjectHumanService} from '../../services/subject-human.service';
-import {Human} from '../../models/Human';
 
 @Component({
   selector: 'app-all-people',
@@ -16,7 +15,8 @@ export class AllPeopleComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private humanService: HumanService,
-              private subjectHumanService: SubjectHumanService) {
+              private subjectHumanService: SubjectHumanService,
+              private router: Router) {
     this.activatedRoute.data.subscribe(value => this.people = value.humanDataRequest);
     console.log(this.people);
     // @ts-ignore
@@ -43,4 +43,7 @@ export class AllPeopleComponent implements OnInit {
     });
   }
 
+  goToApp(): void {
+    this.router.navigate(['']);
+  }
 }

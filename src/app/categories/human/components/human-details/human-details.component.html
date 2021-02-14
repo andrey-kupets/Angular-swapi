@@ -1,21 +1,22 @@
-<router-outlet></router-outlet>
-
-<div *ngIf="human">
-    <hr>
-    <button (click)="goToAddNewHuman()">Add New Human</button>
-    <button (click)="goToEditHuman()">Edit Human</button>
-    <button (click)="goToPeople()">Back</button>
-    <h3>Human details:</h3>
-    <p>{{human.name}}</p>
-    <p>height: {{human.height}}sm</p>
-    <p>mass: {{human.mass}}kg</p>
-    <p>hair_color: {{human.hair_color}}</p>
-    <p>skin_color: {{human.skin_color}}</p>
-    <p>eye_color: {{human.eye_color}}</p>
-    <p>birth_year: {{human.birth_year}}</p>
-    <p>gender: {{human.gender}}</p>
-    <p>homeworld: {{human.homeworld}}</p>
-    <p>created: {{human.created}}</p>
-    <p>edited: {{human.edited}}</p>
-  </div>
+<div *ngIf="human" class ="flex">
+    <div class="dracula">
+      <button (click)="goToAddNewHuman()">Add New Human</button>
+      <button (click)="goToEditHuman()">Edit Human</button>
+      <button (click)="goToPeople()">Back</button>
+      <h3>Human details:</h3>
+      <hr>
+      <span>{{human.name}}</span><br>
+      <span>height: {{human.height}}sm</span><br>
+      <span>mass: {{human.mass}}kg</span><br>
+      <span>hair_color: {{human.hair_color}}</span><br>
+      <span>skin_color: {{human.skin_color}}</span><br>
+      <span>eye_color: {{human.eye_color}}</span><br>
+      <span>birth_year: {{human.birth_year}}</span><br>
+      <span>gender: {{human.gender}}</span><br>
+      <span>homeworld: {{human.homeworld}}</span><br>
+      <span>created: {{human.created}}</span><br>
+      <span>edited: {{human.edited}}</span>
+    </div>
+    <router-outlet></router-outlet>
+</div>
 

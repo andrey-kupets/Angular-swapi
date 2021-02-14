@@ -1,7 +1,11 @@
-<div>
-  <hr>
-  <h2>People: </h2>
-  <app-one-human *ngFor="let human of people.results" [human]="human"></app-one-human>
+<div class="flex">
+  <div class="dracula">
+    <button (click)="goToApp()">Back</button>
+    <h2>People: </h2>
+    <hr>
+    <app-one-human *ngFor="let human of people.results" [human]="human"></app-one-human>
+  </div>
+  <div class="advertisement"><b>your ad could be here!</b></div>
 </div>
 <router-outlet></router-outlet>
 

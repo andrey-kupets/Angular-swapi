@@ -1,1 +1,7 @@
-
+.dracula {
+  width: 500px;
+  border: solid maroon 3px;
+  background: wheat;
+  color: darkred;
+  padding: 10px;
+}

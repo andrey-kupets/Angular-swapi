@@ -1,6 +1,6 @@
-<div *ngIf="human">
-  <hr>
+<div *ngIf="human" class="dracula">
   <h3>Human Edition Form:</h3>
+  <hr>
   <form [formGroup]="humanEditionForm" (ngSubmit)="saveForm(humanEditionForm)">
     <label>Change human name:
       <input type="text" formControlName="name">

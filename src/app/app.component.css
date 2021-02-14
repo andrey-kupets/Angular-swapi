@@ -1,0 +1,23 @@
+.flex {
+  display: flex;
+}
+
+.dracula {
+  width: 100vh;
+  border: solid maroon 3px;
+  background: wheat;
+  color: darkred;
+  padding: 10px;
+}
+
+.advertisement {
+  width: 100vh;
+  border: solid maroon 3px;
+  background: darkgray;
+  color: wheat;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xxx-large;
+}
