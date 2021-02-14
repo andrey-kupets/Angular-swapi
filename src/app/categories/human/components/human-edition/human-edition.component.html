@@ -1,7 +1,7 @@
 <div *ngIf="human">
   <hr>
   <h3>Human Edition Form:</h3>
-  <form [formGroup]="humanEditionForm">
+  <form [formGroup]="humanEditionForm" (ngSubmit)="saveForm(humanEditionForm)">
     <label>Change human name:
       <input type="text" formControlName="name">
     </label><br>
@@ -34,7 +34,8 @@
     </label><br>
     <label>Change human edited:
       <input type="text" formControlName="edited">
-    </label>
+    </label><br>
+    <button>Submit</button>
   </form>
 </div>
 

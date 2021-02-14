@@ -4,5 +4,5 @@ export interface People {
   count: number;
   next: string;
   previous: null;
-  results: Human;
+  results: Human[];
 }
