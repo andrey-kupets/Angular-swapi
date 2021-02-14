@@ -14,14 +14,14 @@ export class HumanDetailsComponent implements OnInit {
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private subjectNumanService: SubjectHumanService) {
+              private subjectHumanService: SubjectHumanService) {
     this.activatedRoute.params.subscribe(value => {
       this.human = this.router.getCurrentNavigation().extras.state as Human;
     });
   }
 
   ngOnInit(): void {
-    this.subjectNumanService.getNewHumanEditionContext().subscribe(editedHuman => {
+    this.subjectHumanService.getNewHumanEditionContext().subscribe(editedHuman => {
       editedHuman ? this.human = editedHuman : null;
     });
   }
