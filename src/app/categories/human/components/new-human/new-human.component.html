@@ -1,1 +1,43 @@
-<p>new-human works!</p>
+<div *ngIf="human" class="dracula2">
+  <form [formGroup]="humanCreationForm" (ngSubmit)="saveForm(humanCreationForm)">
+    <button>Submit/Close</button>
+    <h3>Human Edition Form:</h3>
+    <hr>
+    <label>Change human name:
+      <input class="w_250" type="text" formControlName="name">
+    </label><br>
+    <label>Change human height:
+      <input class="w_250" type="text" formControlName="height">
+    </label><br>
+    <label>Change human mass:
+      <input class="w_250" type="text" formControlName="mass">
+    </label><br>
+    <label>Change human hair_color:
+      <input class="w_250" type="text" formControlName="hair_color">
+    </label><br>
+    <label>Change human skin_color:
+      <input class="w_250" type="text" formControlName="skin_color">
+    </label><br>
+    <label>Change human eye_color:
+      <input class="w_250" type="text" formControlName="eye_color">
+    </label><br>
+    <label>Change human birth_year:
+      <input class="w_250" type="text" formControlName="birth_year">
+    </label><br>
+    <label>Change human gender:
+      <input class="w_250" type="text" formControlName="gender">
+    </label><br>
+    <label>Change human homeworld:
+      <input class="w_250" type="text" formControlName="homeworld">
+    </label><br>
+    <label>Change human created:
+      <input class="w_250" type="text" formControlName="created">
+    </label><br>
+    <label>Change human edited:
+      <input class="w_250" type="text" formControlName="edited">
+    </label><br>
+  </form>
+</div>
+
+
+

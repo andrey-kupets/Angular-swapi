@@ -1,12 +1,17 @@
 .flex {
   display: flex;
+  width: 100%;
+
 }
 
-.dracula {
-  width: 500px;
+.dracula3 {
+  margin-top: 20px;
+  width: 35%;
   border: solid maroon 3px;
   background: wheat;
   color: darkred;
   padding: 10px;
 }
+
+
 
