@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-import { HellComponent } from './categories/human/components/hell/hell.component';
 
 const routes: Routes = [
   {path: 'people', loadChildren: () => import('./categories/human/modules/human/human.module')
@@ -17,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HellComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Human} from '../../models/Human';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule} from '@angular/forms';
 import {SubjectHumanService} from '../../services/subject-human.service';
-import {stopWords} from '../data/stopWords';
+import {stopWords} from '../../data/stopWords';
 
 @Component({
   selector: 'app-human-edition',
@@ -52,18 +52,24 @@ export class HumanEditionComponent implements OnInit {
   }
 
   saveForm(humanEditionForm): void {
-    this.subjectHumanService.setNewHumanInputContext(humanEditionForm.value);
-    console.log(humanEditionForm.value);
-    this.router.navigate(['people', this.id]);
+    humanEditionForm.markAllAsTouched();
+    if (humanEditionForm.status === 'VALID') {
+      this.subjectHumanService.setNewHumanInputContext(humanEditionForm.value);
+      this.router.navigate(['people', this.id]);
+    }
   }
 
-  // validators to the form
+  goToDetails(): void {
+      this.router.navigate(['people', this.id]);
+  }
+
+  // validators for the form
 
   stopWordsVal(inputData: AbstractControl): Error {
     let error = null;
     stopWords.map(word => {
       if (inputData.value.toLowerCase().includes(word)) {
-        error = {error: true, msg: `${word} is not allowed`};
+        error = {error: true, msg: `this word is not allowed`};
       }
     });
     return error;
@@ -79,7 +85,7 @@ export class HumanEditionComponent implements OnInit {
 
   maxLengthVal(inputData: AbstractControl): Error {
     let error = null;
-    if (inputData.value.length > 20) {
+    if (inputData.value.length > 30) {
       error = {error: true, msg: 'maximum length is 20'};
     }
     return error;
@@ -92,25 +98,36 @@ export class HumanEditionComponent implements OnInit {
     }
     return error;
   }
-
-  mailVal(inputData: AbstractControl): Error {
-    let error = null;
-    if (!inputData.value.includes('@')) {
-      error = {error: true, msg: 'must be mail type'};
-    }
-    return error;
-  }
 }
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+// mailVal(inputData: AbstractControl): Error {
+//   let error = null;
+//   if (!inputData.value.includes('@')) {
+//     error = {error: true, msg: 'must be mail type'};
+//   }
+//   return error;
+// }
+
 // uniqueNameVal(inputData: AbstractControl): Error {
 //   let error = null;
 //   const findUser = this.people.results.find(human => inputData.value === human.name);
 //   this.allUsers.map(({id, username}) => {
-//     if (inputData.value === name && findUser.id !== id) { // TODO  не враховуэться що користувач якого редагуэмо маэ такий Username //
+//     if (inputData.value === name && findUser.id !== id) {
 //       error = {error: true, msg: `username ${inputData.value} already booked`};
 //     }
 //   });

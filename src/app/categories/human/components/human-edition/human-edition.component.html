@@ -1,41 +1,54 @@
 <div *ngIf="human" class="editForm">
   <form [formGroup]="humanEditionForm" (ngSubmit)="saveForm(humanEditionForm)">
-    <button>Submit/Close</button>
+<!--    от очередности кнопок звисит функция кнопки Ентер в форме - принимает значение первой кнопки-->
+    <button (click)="goToDetails()">Back</button>
+    <button>Submit</button>
     <h3>Human Edition Form:</h3>
     <hr>
     <label>Change human name:
       <input class="w_250" type="text" formControlName="name">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.name.touched && humanEditionForm.controls.name.invalid">{{humanEditionForm.controls.name.errors.msg}}</div>
     <label>Change human height:
       <input class="w_250" type="text" formControlName="height">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.height.touched && humanEditionForm.controls.height.invalid">{{humanEditionForm.controls.height.errors.msg}}</div>
     <label>Change human mass:
       <input class="w_250" type="text" formControlName="mass">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.mass.touched && humanEditionForm.controls.mass.invalid">{{humanEditionForm.controls.mass.errors.msg}}</div>
     <label>Change human hair_color:
       <input class="w_250" type="text" formControlName="hair_color">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.hair_color.touched && humanEditionForm.controls.hair_color.invalid">{{humanEditionForm.controls.hair_color.errors.msg}}</div>
     <label>Change human skin_color:
       <input class="w_250" type="text" formControlName="skin_color">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.skin_color.touched && humanEditionForm.controls.skin_color.invalid">{{humanEditionForm.controls.skin_color.errors.msg}}</div>
     <label>Change human eye_color:
       <input class="w_250" type="text" formControlName="eye_color">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.eye_color.touched && humanEditionForm.controls.eye_color.invalid">{{humanEditionForm.controls.eye_color.errors.msg}}</div>
     <label>Change human birth_year:
       <input class="w_250" type="text" formControlName="birth_year">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.birth_year.touched && humanEditionForm.controls.birth_year.invalid">{{humanEditionForm.controls.birth_year.errors.msg}}</div>
     <label>Change human gender:
       <input class="w_250" type="text" formControlName="gender">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.gender.touched && humanEditionForm.controls.name.invalid">{{humanEditionForm.controls.gender.errors.msg}}</div>
     <label>Change human homeworld:
       <input class="w_250" type="text" formControlName="homeworld">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.homeworld.touched && humanEditionForm.controls.homeworld.invalid">{{humanEditionForm.controls.homeworld.errors.msg}}</div>
     <label>Change human created:
       <input class="w_250" type="text" formControlName="created">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.created.touched && humanEditionForm.controls.created.invalid">{{humanEditionForm.controls.created.errors.msg}}</div>
     <label>Change human edited:
       <input class="w_250" type="text" formControlName="edited">
     </label><br>
+    <div class="msgError" *ngIf="humanEditionForm.controls.edited.touched && humanEditionForm.controls.edited.invalid">{{humanEditionForm.controls.edited.errors.msg}}</div>
   </form>
 </div>
 
