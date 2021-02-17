@@ -21,20 +21,21 @@ export class HumanDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectHumanService.getNewHumanEditionContext().subscribe(editedHuman => {
+    this.subjectHumanService.getNewHumanInputContext().subscribe(editedHuman => {
       editedHuman ? this.human = editedHuman : null;
     });
   }
 
-  goToAddNewHuman(): void {
-    this.router.navigate(['creation'], {relativeTo: this.activatedRoute, state: this.human});
+  goToPeople(): void {
+    this.router.navigate(['people']);
   }
+
   goToEditHuman(): void {
     this.router.navigate(['edition'], {relativeTo: this.activatedRoute, state: this.human});
   }
 
-  goToPeople(): void {
-    this.router.navigate(['people']);
+  goToAddNewHuman(): void {
+    this.router.navigate(['creation'], {relativeTo: this.activatedRoute, state: this.human});
   }
 
 }

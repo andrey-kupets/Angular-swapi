@@ -1,9 +1,9 @@
-.dracula2 {
+.createForm {
   margin-left: 20px;
   margin-top: 20px;
   width: 100%;
   border: solid maroon 3px;
-  background: wheat;
+  background: #b35ff5;
   color: darkred;
   padding: 10px;
 }

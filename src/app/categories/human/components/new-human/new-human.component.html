@@ -1,7 +1,7 @@
-<div *ngIf="human" class="dracula2">
+<div *ngIf="human" class="createForm">
   <form [formGroup]="humanCreationForm" (ngSubmit)="saveForm(humanCreationForm)">
     <button>Submit/Close</button>
-    <h3>Human Edition Form:</h3>
+    <h3>Human Creation Form:</h3>
     <hr>
     <label>Change human name:
       <input class="w_250" type="text" formControlName="name">

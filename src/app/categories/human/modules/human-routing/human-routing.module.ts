@@ -9,9 +9,8 @@ import {NewHumanComponent} from '../../components/new-human/new-human.component'
 const routes: Routes = [
   {path: '', component: AllPeopleComponent, resolve: {humanDataRequest: HumanResolveService}, children: [
       {path: ':id', component: HumanDetailsComponent, children: [
-          {path: 'edition', component: HumanEditionComponent},
-          {path: 'creation', component: NewHumanComponent},
-        ]}
+          {path: 'edition', component: HumanEditionComponent}, {path: 'creation', component: NewHumanComponent},
+        ]},
     ]}
 ];
 

@@ -7,16 +7,16 @@ import {Human} from '../models/Human';
 })
 export class SubjectHumanService {
 
-  private humanEditionContext = new BehaviorSubject<Human>(null);
+  private humanInputContext = new BehaviorSubject<Human>(null);
 
   constructor() { }
 
-  getNewHumanEditionContext(): BehaviorSubject<Human> {
-    return this.humanEditionContext;
+  getNewHumanInputContext(): BehaviorSubject<Human> {
+    return this.humanInputContext;
   }
 
-  setNewHumanEditionContext(newHumanContext: Human): void {
-    this.humanEditionContext.next(newHumanContext);
+  setNewHumanInputContext(newHumanContext: Human): void {
+    this.humanInputContext.next(newHumanContext);
   }
 
 }

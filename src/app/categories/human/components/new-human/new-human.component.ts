@@ -48,7 +48,7 @@ export class NewHumanComponent implements OnInit {
   }
 
   saveForm(humanEditionForm): void {
-    this.subjectHumanService.setNewHumanEditionContext(humanEditionForm.value);
+    this.subjectHumanService.setNewHumanInputContext(humanEditionForm.value);
     console.log(humanEditionForm.value);
     this.router.navigate(['people', this.id]);
   }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Human} from '../../models/Human';
-import {FormBuilder, FormControl, FormGroup, FormsModule} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule} from '@angular/forms';
 import {SubjectHumanService} from '../../services/subject-human.service';
+import {stopWords} from '../data/stopWords';
 
 @Component({
   selector: 'app-human-edition',
@@ -14,6 +15,9 @@ export class HumanEditionComponent implements OnInit {
   human: Human;
   humanEditionForm: FormGroup;
   id: number;
+
+  @Input()
+  people;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -32,25 +36,83 @@ export class HumanEditionComponent implements OnInit {
 
   private initForm(): void {
     this.humanEditionForm = this.formBuilder.group({
-      name: new FormControl(this.human.name),
-      height: new FormControl(this.human.height),
-      mass: new FormControl(this.human.mass),
-      hair_color: new FormControl(this.human.hair_color),
-      skin_color: new FormControl(this.human.skin_color),
-      eye_color: new FormControl(this.human.eye_color),
-      birth_year: new FormControl(this.human.birth_year),
-      gender: new FormControl(this.human.gender),
-      homeworld: new FormControl(this.human.homeworld),
-      created: new FormControl(this.human.created),
-      edited: new FormControl(this.human.edited),
-      url: new FormControl(this.human.url),
+      name: new FormControl(this.human.name, [this.stopWordsVal, this.minLengthVal, this.maxLengthVal, this.voidVal]),
+      height: new FormControl(this.human.height, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      mass: new FormControl(this.human.mass, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      hair_color: new FormControl(this.human.hair_color, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      skin_color: new FormControl(this.human.skin_color, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      eye_color: new FormControl(this.human.eye_color, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      birth_year: new FormControl(this.human.birth_year, [this.stopWordsVal, this.minLengthVal, this.maxLengthVal, this.voidVal]),
+      gender: new FormControl(this.human.gender, [this.stopWordsVal, this.maxLengthVal, this.voidVal]),
+      homeworld: new FormControl(this.human.homeworld, [this.stopWordsVal, this.voidVal]),
+      created: new FormControl(this.human.created, [this.stopWordsVal, this.minLengthVal, this.maxLengthVal, this.voidVal]),
+      edited: new FormControl(this.human.edited, [this.stopWordsVal, this.minLengthVal, this.maxLengthVal, this.voidVal]),
+      url: new FormControl(this.human.url, [this.stopWordsVal, this.voidVal]),
     });
   }
 
   saveForm(humanEditionForm): void {
-    this.subjectHumanService.setNewHumanEditionContext(humanEditionForm.value);
+    this.subjectHumanService.setNewHumanInputContext(humanEditionForm.value);
     console.log(humanEditionForm.value);
     this.router.navigate(['people', this.id]);
   }
 
+  // validators to the form
+
+  stopWordsVal(inputData: AbstractControl): Error {
+    let error = null;
+    stopWords.map(word => {
+      if (inputData.value.toLowerCase().includes(word)) {
+        error = {error: true, msg: `${word} is not allowed`};
+      }
+    });
+    return error;
+  }
+
+  minLengthVal(inputData: AbstractControl): Error {
+    let error = null;
+    if (inputData.value.length < 4) {
+      error = {error: true, msg: 'minimal length is 4'};
+    }
+    return error;
+  }
+
+  maxLengthVal(inputData: AbstractControl): Error {
+    let error = null;
+    if (inputData.value.length > 20) {
+      error = {error: true, msg: 'maximum length is 20'};
+    }
+    return error;
+  }
+
+  voidVal(inputData: AbstractControl): Error {
+    let error = null;
+    if (inputData.value === '') {
+      error = {error: true, msg: 'empty field is not allowed'};
+    }
+    return error;
+  }
+
+  mailVal(inputData: AbstractControl): Error {
+    let error = null;
+    if (!inputData.value.includes('@')) {
+      error = {error: true, msg: 'must be mail type'};
+    }
+    return error;
+  }
 }
+
+
+
+
+
+// uniqueNameVal(inputData: AbstractControl): Error {
+//   let error = null;
+//   const findUser = this.people.results.find(human => inputData.value === human.name);
+//   this.allUsers.map(({id, username}) => {
+//     if (inputData.value === name && findUser.id !== id) { // TODO  не враховуэться що користувач якого редагуэмо маэ такий Username //
+//       error = {error: true, msg: `username ${inputData.value} already booked`};
+//     }
+//   });
+//   return error;
+// }

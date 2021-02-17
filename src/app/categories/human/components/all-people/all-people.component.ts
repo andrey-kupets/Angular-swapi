@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HumanService} from '../../services/human.service';
 import {People} from '../../models/People';
 import {SubjectHumanService} from '../../services/subject-human.service';
+import {Human} from '../../models/Human';
 
 @Component({
   selector: 'app-all-people',
@@ -33,7 +34,7 @@ export class AllPeopleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectHumanService.getNewHumanEditionContext().subscribe(editedHuman => {
+    this.subjectHumanService.getNewHumanInputContext().subscribe(editedHuman => {
       if (!!editedHuman) {
         const updatedPeopleResults = this.people.results.filter(({url}) => editedHuman.url !== url);
         updatedPeopleResults.push(editedHuman);
