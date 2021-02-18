@@ -44,13 +44,13 @@ export class AllPeopleComponent implements OnInit {
     //   }
     // });
 
-    // это для формы humanEditionForm
+    // это для формы humanCreationForm
     this.subjectHumanService.getNewHumanInputContext().subscribe(createdHuman => {
       if (!!createdHuman) {
         const updatedResults = this.people.results;
         createdHuman.url.split('/').reverse()[1] = (+updatedResults[updatedResults.length - 1].url.split('/').reverse()[1] + 1).toString();
         updatedResults.push(createdHuman);
-        console.log(createdHuman.url.split('/').reverse()[1]);
+        console.log(createdHuman.url.split('/').reverse()[1], " - не присваивает"); //  - не присваивает
       }
     });
   }
