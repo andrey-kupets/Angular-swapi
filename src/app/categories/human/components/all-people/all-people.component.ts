@@ -34,12 +34,23 @@ export class AllPeopleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectHumanService.getNewHumanInputContext().subscribe(editedHuman => {
-      if (!!editedHuman) {
-        const updatedPeopleResults = this.people.results.filter(({url}) => editedHuman.url !== url);
-        updatedPeopleResults.push(editedHuman);
-        updatedPeopleResults.sort((a, b) => +a.url.split('/').reverse()[1] - +b.url.split('/').reverse()[1]);
-        this.people.results = updatedPeopleResults;
+    // это для формы humanEditionForm
+    // this.subjectHumanService.getNewHumanInputContext().subscribe(editedHuman => {
+    //   if (!!editedHuman) {
+    //     const updatedPeopleResults = this.people.results.filter(({url}) => editedHuman.url !== url);
+    //     updatedPeopleResults.push(editedHuman);
+    //     updatedPeopleResults.sort((a, b) => +a.url.split('/').reverse()[1] - +b.url.split('/').reverse()[1]);
+    //     this.people.results = updatedPeopleResults;
+    //   }
+    // });
+
+    // это для формы humanEditionForm
+    this.subjectHumanService.getNewHumanInputContext().subscribe(createdHuman => {
+      if (!!createdHuman) {
+        const updatedResults = this.people.results;
+        createdHuman.url.split('/').reverse()[1] = (+updatedResults[updatedResults.length - 1].url.split('/').reverse()[1] + 1).toString();
+        updatedResults.push(createdHuman);
+        console.log(createdHuman.url.split('/').reverse()[1]);
       }
     });
   }

@@ -1,4 +1,4 @@
 <div class="space-between">
-   <div class="cosmo"><b>{{id}} - {{human.name}}</b></div>
-  <a [routerLink]="[id]" (click)="goToDetails()">show details</a>
+   <div class="cosmo"><b>{{human.url.split('/').reverse()[1]}} - {{human.name}}</b></div>
+  <a [routerLink]="[human.url.split('/').reverse()[1]]" (click)="goToDetails()">show details</a>
 </div>

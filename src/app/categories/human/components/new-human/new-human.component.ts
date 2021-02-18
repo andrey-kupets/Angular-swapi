@@ -48,11 +48,11 @@ export class NewHumanComponent implements OnInit {
     });
   }
 
-  saveForm(humanEditionForm): void {
-    humanEditionForm.markAllAsTouched();
-    if (humanEditionForm.status === 'VALID') {
-      this.subjectHumanService.setNewHumanInputContext(humanEditionForm.value);
-      console.log(humanEditionForm.value);
+  saveForm(humanCreationForm): void {
+    humanCreationForm.markAllAsTouched();
+    if (humanCreationForm.status === 'VALID') {
+      this.subjectHumanService.setNewHumanInputContext(humanCreationForm.value);
+      console.log(humanCreationForm.value);
       this.router.navigate(['people', this.id]);
     }
   }

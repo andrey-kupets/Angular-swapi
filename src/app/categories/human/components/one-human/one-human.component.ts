@@ -11,7 +11,7 @@ export class OneHumanComponent implements OnInit {
 
   @Input()
   human: Human;
-  id: number;
+  // id: number;
 
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
@@ -20,11 +20,11 @@ export class OneHumanComponent implements OnInit {
     // get id# ---- if you set in all-people comp-t --- it will have to change an entrance object
     // console.log((this.human.url.split('/')[this.human.url.split('/').length-2]));
     // or --- human.url.split('/').reverse()[1]
-    this.id = +this.human.url.split('/').reverse()[1];
+    // this.id = +this.human.url.split('/').reverse()[1];
   }
 
   goToDetails(): void {
-    this.router.navigate([this.id], {relativeTo: this.activatedRoute, state: this.human});
+    this.router.navigate([this.human.url.split('/').reverse()[1]], {relativeTo: this.activatedRoute, state: this.human});
   }
 
 }
